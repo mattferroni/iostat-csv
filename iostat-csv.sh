@@ -36,13 +36,15 @@ echo "${TITLE_LINE_HEADER} ${TITLE_AVG_CPU} ${TITLE_DEVICES}" \
 
 
 # Main part
-LANG=C; iostat -t -x 1 | grep -v -e avg-cpu -e Device -e Linux \
+iostat -t -x 1 | grep -v -e avg-cpu -e Device -e Linux \
  | paste ${PASTE_LINE_HYPHENS} | awk 'BEGIN {OFS=","} {$1=$1;print $0}'
 
+# NOTE: this has been removed, as not working properly --- BEGIN
 # tail -n +3
 #  => Output after 3rd lines of the iostat output
+# NOTE: this has been removed --- END
 
-# grep -v -e avg-cpu -e avgqu-sz
+# grep -v -e avg-cpu -e Device -e Linux
 #  => Exclude title columns
 
 # paste ${PASTE_LINE_HYPHENS}
