@@ -36,7 +36,7 @@ echo "${TITLE_LINE_HEADER} ${TITLE_AVG_CPU} ${TITLE_DEVICES}" \
 
 
 # Main part
-LANG=C; iostat -t -x 1 | tail -n +3 | grep -v -e avg-cpu -e Device \
+LANG=C; iostat -t -x 1 | grep -v -e avg-cpu -e Device -e Linux \
  | paste ${PASTE_LINE_HYPHENS} | awk 'BEGIN {OFS=","} {$1=$1;print $0}'
 
 # tail -n +3
